@@ -10,11 +10,14 @@ class PaynestApp extends StatelessWidget {
     return MaterialApp(
       title: 'PayNestor App',
       theme: ThemeData(
-        primarySwatch: Colors.teal,
-        scaffoldBackgroundColor: Colors.grey[900],
+        primarySwatch: Colors.green, // Olive color for primary
+        scaffoldBackgroundColor: Colors.grey[100], // Cream background
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFFA8F805), // Olive AppBar
+        ),
         textTheme: TextTheme(
-          headlineMedium: TextStyle(color: Colors.white), // For titles
-          bodyMedium: TextStyle(color: Colors.white), // For body text
+          headlineMedium: TextStyle(color: Color(0xFF483C32)), // Taupe for titles
+          bodyMedium: TextStyle(color: Color(0xFF483C32)), // Taupe for body text
         ),
       ),
       home: AccountSetupPage(),
@@ -55,21 +58,33 @@ class _AccountSetupPageState extends State<AccountSetupPage> {
           children: <Widget>[
             TextField(
               controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email', filled: true, fillColor: Colors.teal[600]),
-              style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                labelText: 'Email',
+                filled: true,
+                fillColor: Colors.green[100], // Olive light fill for input
+              ),
+              style: TextStyle(color: Color(0xFF483C32)), // Taupe text
             ),
             SizedBox(height: 10),
             TextField(
               controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Password', filled: true, fillColor: Colors.teal[600]),
+              decoration: InputDecoration(
+                labelText: 'Password',
+                filled: true,
+                fillColor: Colors.green[100], // Olive light fill
+              ),
               obscureText: true,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Color(0xFF483C32)), // Taupe text
             ),
             SizedBox(height: 10),
             TextField(
               controller: _phoneController,
-              decoration: InputDecoration(labelText: 'Phone Number', filled: true, fillColor: Colors.teal[600]),
-              style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                labelText: 'Phone Number',
+                filled: true,
+                fillColor: Colors.green[100], // Olive light fill
+              ),
+              style: TextStyle(color: Color(0xFF483C32)), // Taupe text
             ),
             SizedBox(height: 20),
             ElevatedButton(
@@ -78,6 +93,9 @@ class _AccountSetupPageState extends State<AccountSetupPage> {
                   _isAccountCreated = true;
                 });
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFA8F805), // Olive button color
+              ),
               child: Text('Create Account'),
             ),
           ],
@@ -107,12 +125,15 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Welcome to PayNestor!', style: TextStyle(fontSize: 24, color: Colors.teal[700])),
+            Text('Welcome to PayNestor!', style: TextStyle(fontSize: 24, color: Color(0xFFA8F805))), // Olive text
             SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => TransferMoneyPage()));
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFA8F805), // Olive button
+              ),
               child: Text('Transfer Money'),
             ),
             SizedBox(height: 10),
@@ -120,6 +141,9 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => BalanceHistoryPage()));
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFA8F805), // Olive button
+              ),
               child: Text('Balance History'),
             ),
             SizedBox(height: 10),
@@ -127,6 +151,9 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => MobileRechargePage()));
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFA8F805), // Olive button
+              ),
               child: Text('Mobile Recharge'),
             ),
             SizedBox(height: 10),
@@ -134,6 +161,9 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => BookTicketsPage()));
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFA8F805), // Olive button
+              ),
               child: Text('Book Tickets'),
             ),
             SizedBox(height: 10),
@@ -141,6 +171,9 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => CrossBorderPaymentPage()));
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFA8F805), // Olive button
+              ),
               child: Text('Cross-Border Payment'),
             ),
           ],
@@ -187,15 +220,23 @@ class _TransferMoneyPageState extends State<TransferMoneyPage> {
             SizedBox(height: 10),
             TextField(
               controller: _recipientController,
-              decoration: InputDecoration(labelText: 'Recipient', filled: true, fillColor: Colors.teal[600]),
-              style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                labelText: 'Recipient',
+                filled: true,
+                fillColor: Colors.green[100], // Olive light fill
+              ),
+              style: TextStyle(color: Color(0xFF483C32)), // Taupe text
             ),
             SizedBox(height: 10),
             TextField(
               controller: _amountController,
-              decoration: InputDecoration(labelText: 'Amount', filled: true, fillColor: Colors.teal[600]),
+              decoration: InputDecoration(
+                labelText: 'Amount',
+                filled: true,
+                fillColor: Colors.green[100], // Olive light fill
+              ),
               keyboardType: TextInputType.number,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Color(0xFF483C32)), // Taupe text
             ),
             SizedBox(height: 20),
             ElevatedButton(
@@ -207,6 +248,9 @@ class _TransferMoneyPageState extends State<TransferMoneyPage> {
                   _showSuccessDialog(context, _recipientController.text, amount);
                 }
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFA8F805), // Olive button color
+              ),
               child: Text('Send Money'),
             ),
           ],
@@ -217,37 +261,39 @@ class _TransferMoneyPageState extends State<TransferMoneyPage> {
 
   void _showErrorDialog(BuildContext context, String message) {
     showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
+      context: context,
+      builder: (context) => AlertDialog(
         title: Text('Error'),
         content: Text(message),
         actions: <Widget>[
-        TextButton(
-        onPressed: () {
-      Navigator.of(context).pop();
-    },
-    child: Text('OK'),),
-  ],
-  ),
-  );
-}
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
 
-void _showSuccessDialog(BuildContext context, String recipient, double amount) {
-  showDialog(
+  void _showSuccessDialog(BuildContext context, String recipient, double amount) {
+    showDialog(
       context: context,
       builder: (context) => AlertDialog(
-      title: Text('Success'),
-      content: Text('You sent ₹${amount.toStringAsFixed(2)} to $recipient.'),
-      actions: <Widget>[
-      TextButton(
-      onPressed: () {
-    Navigator.of(context).pop();
-  },
-  child: Text('OK'),),
-],
-),
-);
-}
+        title: Text('Success'),
+        content: Text('You sent ₹${amount.toStringAsFixed(2)} to $recipient.'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class BalanceHistoryPage extends StatefulWidget {
@@ -264,46 +310,19 @@ class _BalanceHistoryPageState extends State<BalanceHistoryPage> {
       appBar: AppBar(
         title: Text('Balance History'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: transactions.isEmpty
-            ? Center(child: Text('No transaction history found.', style: TextStyle(color: Colors.white)))
-            : ListView.builder(
-          itemCount: transactions.length,
-          itemBuilder: (context, index) {
-            final transaction = transactions[index];
-            return ListTile(
-              title: Text(transaction['recipient'] ?? 'Unknown', style: TextStyle(color: Colors.white)),
-              subtitle: Text(transaction['date'] ?? 'No Date', style: TextStyle(color: Colors.white)),
-              trailing: Text('₹${transaction['amount']?.toStringAsFixed(2) ?? '0.00'}', style: TextStyle(color: Colors.white)),
-            );
-          },
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _addTransaction();
+      body: ListView.builder(
+        itemCount: transactions.length,
+        itemBuilder: (context, index) {
+          final transaction = transactions[index];
+          return ListTile(
+            title: Text('${transaction['type']} - ₹${transaction['amount']}'),
+            subtitle: Text('Date: ${transaction['date']}'),
+          );
         },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.teal,
       ),
     );
   }
-
-  void _addTransaction() {
-    // Example transaction data, you can modify this to accept user input
-    final newTransaction = {
-      'recipient': 'New User',
-      'amount': 1000.00,
-      'date': DateTime.now().toLocal().toString().split(' ')[0], // Just the date part
-    };
-
-    setState(() {
-      transactions.add(newTransaction); // Add the new transaction to the list
-    });
-  }
 }
-
 
 class MobileRechargePage extends StatelessWidget {
   @override
@@ -312,29 +331,8 @@ class MobileRechargePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Mobile Recharge'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(labelText: 'Mobile Number', filled: true, fillColor: Colors.teal[600]),
-              style: TextStyle(color: Colors.white),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(labelText: 'Amount', filled: true, fillColor: Colors.teal[600]),
-              keyboardType: TextInputType.number,
-              style: TextStyle(color: Colors.white),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Add mobile recharge functionality here
-              },
-              child: Text('Recharge'),
-            ),
-          ],
-        ),
+      body: Center(
+        child: Text('Mobile Recharge Page'),
       ),
     );
   }
@@ -347,11 +345,8 @@ class BookTicketsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Book Tickets'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Text('Ticket booking functionality goes here.', style: TextStyle(color: Colors.white)),
-        ),
+      body: Center(
+        child: Text('Book Tickets Page'),
       ),
     );
   }
@@ -364,11 +359,8 @@ class CrossBorderPaymentPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Cross-Border Payment'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Text('Cross-border payment functionality goes here.', style: TextStyle(color: Colors.white)),
-        ),
+      body: Center(
+        child: Text('Cross-Border Payment Page'),
       ),
     );
   }
